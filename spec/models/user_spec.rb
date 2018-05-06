@@ -41,7 +41,12 @@ RSpec.describe User, type: :model do
 
   describe 'on save' do
 
-    it 'hashes a password'
+    it 'hashes a password' do
+      user = build(:user)
+      user.save
+
+      expect(user.password_digest).not_to equal(user.password)
+    end
 
   end
 
