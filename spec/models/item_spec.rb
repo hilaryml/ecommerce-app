@@ -29,7 +29,7 @@ RSpec.describe Item, type: :model do
       item = create(:item)
       line_item = cart.line_items.create(quantity: 1, item: item)
 
-      expect(item.line_item.id).to eq(id: line_item.id)
+      expect(item.line_items.first.id).not_to eq(nil)
 
       item.destroy
       line_item = LineItem.find_by(id: line_item.id)

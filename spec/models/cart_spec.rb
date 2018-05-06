@@ -32,7 +32,7 @@ RSpec.describe Cart, type: :model do
       item = create(:item)
       line_item = cart.line_items.create(quantity: 1, item: item)
 
-      expect(cart.items,count).to eq(1)
+      expect(cart.items.count).to eq(1)
     end
 
     it 'it belongs to a user' do
