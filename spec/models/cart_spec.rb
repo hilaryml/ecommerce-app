@@ -18,7 +18,11 @@ RSpec.describe Cart, type: :model do
 
     pending 'has many items through line items'
 
-    pending 'it belongs to a user'
+    it 'it belongs to a user' do
+      cart = create(:cart)
+
+      expect(cart.user.email).to eq("avi@flatironschool.com")
+    end
 
   end
 end
