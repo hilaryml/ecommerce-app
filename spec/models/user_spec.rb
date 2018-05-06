@@ -6,8 +6,8 @@ RSpec.describe User, type: :model do
     it 'requires an email and password upon creation' do
       user = build(:user, email: nil, password: nil)
 
-      expect(user.valid?).to equal(false)
-      expect(user.errors.full_messages).to eql([
+      expect(user.valid?).to eq(false)
+      expect(user.errors.full_messages).to eq([
         "Password can't be blank",
         "Email can't be blank",
         "Email is invalid"
@@ -18,8 +18,8 @@ RSpec.describe User, type: :model do
       create(:user)
       user = build(:user)
 
-      expect(user.valid?).to equal(false)
-      expect(user.errors.full_messages).to eql([
+      expect(user.valid?).to eq(false)
+      expect(user.errors.full_messages).to eq([
         "Email has already been taken"
       ])
     end
@@ -30,11 +30,11 @@ RSpec.describe User, type: :model do
       user3 = build(:user, email: 'avi')
 
       expect(user1.valid?).to equal(false)
-      expect(user1.errors.full_messages).to eql([
+      expect(user1.errors.full_messages).to eq([
         "Email is invalid"
       ])
-      expect(user2.valid?).to equal(false)
-      expect(user3.valid?).to equal(false)
+      expect(user2.valid?).to eq(false)
+      expect(user3.valid?).to eq(false)
     end
 
   end
@@ -45,7 +45,7 @@ RSpec.describe User, type: :model do
       user = build(:user)
       user.save
 
-      expect(user.password_digest).not_to equal(user.password)
+      expect(user.password_digest).not_to eq(user.password)
     end
 
   end
@@ -68,7 +68,7 @@ RSpec.describe User, type: :model do
       user = create(:user)
       user.order.create
 
-      expect(user.order.id).not_to equal(nil)
+      expect(user.order.id).not_to eq(nil)
     end
 
   end
