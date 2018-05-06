@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :cart do
-    user nil
-    status "MyString"
+    user
+    status "Active"
   end
 end
