@@ -24,7 +24,18 @@ RSpec.describe Item, type: :model do
       expect(item.category.title).to eq('clothing')
     end
 
-    it 'has many line items'
+    it 'has many line items' do
+      cart = create(:cart)
+      item = create(:item)
+      line_item = cart.line_items.create(quantity: 1, item: item)
+
+      expect(item.line_item.id).to eq(id: line_item.id)
+
+      item.destroy
+      line_item = LineItem.find_by(id: line_item.id)
+
+      expect(line_item).to eq(nil)
+    end
 
     it 'has many order items'
   end
